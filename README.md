@@ -1,8 +1,7 @@
 README - CRUD para Almacén
-Este proyecto escolar tiene como objetivo proporcionar una herramienta para la gestión de estantes, almacenes, productos, entradas y salidas de un almacén escolar. El proyecto cuenta con un sistema CRUD que permite crear, leer, actualizar y eliminar registros de las diferentes entidades.
+Este proyecto tiene como objetivo proporcionar una herramienta para la gestión de estantes, almacenes, productos, entradas y salidas de un almacén definido por el cliente. El proyecto cuenta con un sistema CRUD que permite crear, leer, actualizar y eliminar registros de las diferentes entidades.
 
-Características
-El sistema permite:
+Características:
 
 Gestionar estantes y almacenes: se pueden agregar, editar y eliminar estantes y almacenes según sea necesario. También se pueden visualizar los detalles de cada estante y almacén.
 Gestionar productos: se pueden agregar, editar y eliminar productos del almacén. También se pueden visualizar los detalles de cada producto, incluyendo la cantidad disponible en el almacén.
