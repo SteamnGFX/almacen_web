@@ -1,40 +1,176 @@
 
 
+var ctx1 = document.getElementById('myChart1').getContext('2d');
+var ctx2 = document.getElementById('myChart2').getContext('2d');
+var ctx3 = document.getElementById('myChart3').getContext('2d');
+var ctx4 = document.getElementById('myChart4').getContext('2d');
+var ctx5 = document.getElementById('myChart5').getContext('2d');
+var ctx6 = document.getElementById('myChart6').getContext('2d');
 
-var ctx = document.getElementById('myChart').getContext('2d');
-  var myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Completado', 'Pendiente'],
-      datasets: [{
-        data: [75, 25],
-        backgroundColor: ['#28a745', '#dc3545']
-      }]
-    },
-    options: {
-      cutout: '90%',
-      animation: {
-        animateRotate: false,
-        animateScale: true
-      },
-      tooltips: {
-        enabled: false
-      }
-    }
-  });
+var padreG1 = document.getElementById('padreG1');
+var padreG2 = document.getElementById('padreG2');
+var padreG3 = document.getElementById('padreG3');
+var padreG4 = document.getElementById('padreG4');
+var padreG5 = document.getElementById('padreG5');
+var padreG6 = document.getElementById('padreG6');
 
-  var status = document.getElementById('status');
-  myChart.options.events = ['click'];
-  myChart.options.onClick = function(evt, element) {
-    if (element && element[0]) {
-      var percent = element[0]._model.circumference / (Math.PI * 2) * 100;
-      status.innerHTML = 'Progreso: ' + Math.round(percent) + '%';
-      if (percent >= 100) {
-        document.querySelector('.position-relative').style.backgroundColor = '#28a745';
-      } else if (percent <= 0) {
-        document.querySelector('.position-relative').style.backgroundColor = '#dc3545';
-      } else {
-        document.querySelector('.position-relative').style.backgroundColor = 'linear-gradient(to right, #28a745 ' + percent + '%, #dc3545 ' + percent + '%)';
-      }
+var data = {        
+        datasets: [{
+                label: 'Existencias',
+                data: [20, 80],
+                backgroundColor: ['#27368B', '#FFFFFF']
+            }]
+    };
+    
+    
+var options = {
+        tooltips: {
+            enabled: true
+        },
+        plugins: {
+            datalabels: {
+                formatter: function (value, context) {
+                    var dataset = context.chart.data.datasets[context.datasetIndex];
+                    var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                        return previousValue + currentValue;
+                    });
+                    var currentValue = dataset.data[context.dataIndex];
+                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                    return percentage + "%";
+                },
+                color: '#ffffff',
+                font: {
+                    size: '20'
+                }
+            }
+        },
+        cutout: '80%',
+        animation: {
+            animateScale: true
+        },
+        
+        hover: {
+            mode: null
+        }
+    };
+    
+    
+var chart1 = new Chart('myChart1', {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+    
+var chart2 = new Chart('myChart2', {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+    
+var chart3 = new Chart('myChart3', {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+    
+var chart4 = new Chart('myChart4', {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+    
+var chart5 = new Chart('myChart5', {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+    
+var chart6 = new Chart('myChart6', {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+   
+
+function updateStatus() {
+    var percentage = chart1.data.datasets[0].data[0];
+    
+    if (percentage >= 100) {
+
+        padreG1.style.backgroundColor = '#F44336';
+    } else if (percentage <= 0) {
+
+        padreG1.style.backgroundColor = '#4CAF50';
+    } else {
+
+        padreG1.style.backgroundColor = '#4CAF50';
     }
-  };
+    
+    var percentage = chart2.data.datasets[0].data[0];
+    
+    if (percentage >= 100) {
+
+        padreG2.style.backgroundColor = '#F44336';
+    } else if (percentage <= 0) {
+
+        padreG2.style.backgroundColor = '#4CAF50';
+    } else {
+
+        padreG2.style.backgroundColor = '#4CAF50';
+    }
+    
+    var percentage = chart3.data.datasets[0].data[0];
+    
+    if (percentage >= 100) {
+
+        padreG3.style.backgroundColor = '#F44336';
+    } else if (percentage <= 0) {
+
+        padreG3.style.backgroundColor = '#4CAF50';
+    } else {
+
+        padreG3.style.backgroundColor = '#4CAF50';
+    }
+    
+    var percentage = chart4.data.datasets[0].data[0];
+    
+    if (percentage >= 100) {
+
+        padreG4.style.backgroundColor = '#F44336';
+    } else if (percentage <= 0) {
+
+        padreG4.style.backgroundColor = '#4CAF50';
+    } else {
+
+        padreG4.style.backgroundColor = '#4CAF50';
+    }
+    
+    var percentage = chart5.data.datasets[0].data[0];
+    
+    if (percentage >= 100) {
+
+        padreG5.style.backgroundColor = '#F44336';
+    } else if (percentage <= 0) {
+
+        padreG5.style.backgroundColor = '#4CAF50';
+    } else {
+
+        padreG5.style.backgroundColor = '#4CAF50';
+    }
+    
+    var percentage = chart6.data.datasets[0].data[0];
+    
+    if (percentage >= 100) {
+
+        padreG6.style.backgroundColor = '#F44336';
+    } else if (percentage <= 0) {
+
+        padreG6.style.backgroundColor = '#4CAF50';
+    } else {
+
+        padreG6.style.backgroundColor = '#4CAF50';
+    }
+    
+}
+
+updateStatus();

@@ -4,7 +4,7 @@
     Author     : Fernando Gamboa 
 */
 
-.box {
-  
-  
+#padreG1,#padreG2,#padreG3,#padreG4,#padreG5,#padreG6 {
+  transition: background-color 0.5s ease-in-out;
+  background-color: #F44336;
 }
