@@ -6,18 +6,26 @@ function cargarAlmacen() {
     document.getElementById("navbar-almacen").style.fontWeight = "bold";
     document.getElementById("navbar-productos").style.fontWeight = "";
     document.getElementById("navbar-reporte").style.fontWeight = "";
-    document.getElementById("navbar-empleados").style.fontWeight = "";
+    document.getElementById("navbar-empleados").style.fontWeight = "";    
+    
+    fetch('moduloAlmacen/vista_Almacen.html')
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(html) {
+    // Insertar el HTML en el DOM
+    document.getElementById('contenedorPrincipal').innerHTML = html;
+    
 
-    fetch("modulos/moduloAlmacen/view_Almacen.html")
-            .then(
-                    function (response) {
-                        return response.text();
-                    }
-            ).then(
-            function (html) {
-                document.getElementById("contenedorPrincipal").innerHTML = html;
-            }
-    );
+    // Cargar el controlador JS
+    var script = document.createElement('script');
+    script.src = 'moduloAlmacen/controlador_Almacen.js';
+    document.body.appendChild(script);
+  })
+  .catch(function(error) {
+    console.error(error);
+  });
+
 }
 function cargarVistaProducto() {
     document.getElementById("navbar-inicio").style.fontWeight = "";
@@ -26,7 +34,7 @@ function cargarVistaProducto() {
     document.getElementById("navbar-reporte").style.fontWeight = "";
     document.getElementById("navbar-empleados").style.fontWeight = "";
 
-    fetch("modulos/moduloAlmacen/moduloVistaProducto/view_Producto.html")
+    fetch("moduloAlmacen/moduloVistaProducto/view_Producto.html")
             .then(
                     function (response) {
                         return response.text();
