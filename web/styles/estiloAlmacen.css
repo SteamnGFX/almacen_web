@@ -5,6 +5,34 @@
 */
 
 #padreG1,#padreG2,#padreG3,#padreG4,#padreG5,#padreG6 {
-  transition: background-color 0.5s ease-in-out;
-  background-color: #F44336;
+    transition: background-color 0.5s ease-in-out;
+    background-color: #F44336;
+}
+
+.bordes-contenedor{
+    border-radius: 20px; 
+}
+
+.bordes-almacen-s{
+    border-radius: 20px 20px 0px 0px; 
+}
+
+.bordes-almacen-i{
+    border-radius: 0px 0px 20px 20px; 
+}
+
+.bordes-estante-si{
+    border-radius: 20px 0px 0px 0px;
+}
+
+.bordes-estante-sd{
+    border-radius: 0px 20px 0px 0px;
+}
+
+.bordes-estante-id{
+    border-radius: 0px 0px 20px 0px;
+}
+
+.bordes-estante-ii{
+    border-radius: 0px 0px 0px 20px;
 }
