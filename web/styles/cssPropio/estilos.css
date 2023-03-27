@@ -1,0 +1,75 @@
+.velocidad {
+    --animate-duration: 0.3s;
+}
+
+
+.searchEmpleado{
+    border-radius: 20px 0px 0px 20px;
+    height: 50px;
+    width: 200px;
+    border-style: solid;
+    padding-left: 20px;
+    border-color: #B4B4B4;
+}
+
+.searchEmpleadoBefore{
+    border-radius: 0px 20px 20px 0px;
+    height: 50px;
+    width: 50px;
+    border-style: solid;
+    border-color: #B4B4B4;
+    background-color: #B4B4B4;
+}
+
+.dataTables_filter{
+    display:none;
+}
+
+.searchEmpleado::placeholder{
+    font-size: 15px;
+}
+
+.imgSearch{
+    width: 32px;
+    height: 32px;
+    margin-top: 20%;
+}
+
+.btn-purple{
+    background-color: #8E6BC3;
+    color: #ffffff;
+}
+
+.imagenTabla{
+    width: 32px;
+    height: 32px;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    /* Cambia el tamaño de "mi imagen" al 50% */
+    .logoResponsive {
+        width: 100%;
+        opacity: 0.1;
+        height: auto;
+    }
+}
+
+.logoResponsive {
+    display: block;
+    width: 25em;
+    margin: 100px;
+    opacity: 0; /* Empieza con opacidad 0 */
+    animation: fade-in 5s forwards;
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.3;
+  }
+}

@@ -1,6 +1,19 @@
 function cargarInicio() {
     window.location = "modulos/Inicio.html";
+    // Crear una etiqueta <script> y agregar los atributos necesarios
+    var dataTableScript = document.createElement('script');
+    dataTableScript.src = 'datables.min.js';
+    
+    
+    dataTableScript.type = 'text/javascript';
+    dataTableScript.async = true;
+
+// Obtener el elemento <head> de la página y agregar el script de DataTable
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(dataTableScript);
+
 }
+
 function cargarAlmacen() {
     document.getElementById("navbar-inicio").style.fontWeight = "";
     document.getElementById("navbar-almacen").style.fontWeight = "bold";
@@ -64,15 +77,14 @@ function cargarVistaEstante() {
     );
 }
 
-
 function cargarEmpleado() {
     document.getElementById("navbar-inicio").style.fontWeight = "";
     document.getElementById("navbar-almacen").style.fontWeight = "";
-    document.getElementById("navbar-productos").style.fontWeight = "bold";
+    document.getElementById("navbar-productos").style.fontWeight = "";
     document.getElementById("navbar-reporte").style.fontWeight = "";
-    document.getElementById("navbar-empleados").style.fontWeight = "";
+    document.getElementById("navbar-empleados").style.fontWeight = "bold";
 
-    fetch("modulos/moduloEmpleado/view_Empleado.html")
+    fetch("moduloEmpleado/vista_Empleado.html")
             .then(
                     function (response) {
                         return response.text();
@@ -80,27 +92,16 @@ function cargarEmpleado() {
             ).then(
             function (html) {
                 document.getElementById("contenedorPrincipal").innerHTML = html;
+                import("../modulos/moduloEmpleado/ControladorEmpleado.js").then(
+                        function (controller) {
+                            moduloEmpleado = controller;
+                            moduloEmpleado.inicializar();
+                        }
+                );
             }
     );
 }
-function cargarModificarEmpleado() {
-    document.getElementById("navbar-inicio").style.fontWeight = "";
-    document.getElementById("navbar-almacen").style.fontWeight = "";
-    document.getElementById("navbar-productos").style.fontWeight = "bold";
-    document.getElementById("navbar-reporte").style.fontWeight = "";
-    document.getElementById("navbar-empleados").style.fontWeight = "";
 
-    fetch("modulos/moduloEmpleado/moduloModificarEmpleado/view_ModificarEmpleado.html")
-            .then(
-                    function (response) {
-                        return response.text();
-                    }
-            ).then(
-            function (html) {
-                document.getElementById("contenedorPrincipal").innerHTML = html;
-            }
-    );
-}
 function cargarProducto() {
     document.getElementById("navbar-inicio").style.fontWeight = "";
     document.getElementById("navbar-almacen").style.fontWeight = "";

@@ -1,16 +1,16 @@
-var  ctx1 = document.getElementById('myChart1').getContext('2d');
-var  ctx2 = document.getElementById('myChart2').getContext('2d');
-var  ctx3 = document.getElementById('myChart3').getContext('2d');
-var  ctx4 = document.getElementById('myChart4').getContext('2d');
-var  ctx5 = document.getElementById('myChart5').getContext('2d');
-var  ctx6 = document.getElementById('myChart6').getContext('2d');
+var ctx1 = document.getElementById('myChart1').getContext('2d');
+var ctx2 = document.getElementById('myChart2').getContext('2d');
+var ctx3 = document.getElementById('myChart3').getContext('2d');
+var ctx4 = document.getElementById('myChart4').getContext('2d');
+var ctx5 = document.getElementById('myChart5').getContext('2d');
+var ctx6 = document.getElementById('myChart6').getContext('2d');
 
-var  padreG1 = document.getElementById('padreG1');
-var  padreG2 = document.getElementById('padreG2');
-var  padreG3 = document.getElementById('padreG3');
-var  padreG4 = document.getElementById('padreG4');
-var  padreG5 = document.getElementById('padreG5');
-var  padreG6 = document.getElementById('padreG6');
+var padreG1 = document.getElementById('padreG1');
+var padreG2 = document.getElementById('padreG2');
+var padreG3 = document.getElementById('padreG3');
+var padreG4 = document.getElementById('padreG4');
+var padreG5 = document.getElementById('padreG5');
+var padreG6 = document.getElementById('padreG6');
 
 var chart1;
 var chart2;
@@ -19,12 +19,29 @@ var chart4;
 var chart5;
 var chart6;
 
+// Define la función que se ejecutará cada semana
+function actualizacionSemanal() {
+    console.log('Ha pasado una semana desde la última vez que se ejecutó la función.');
+    // Inserta aquí el código que deseas que se ejecute cada semana
+}
+
+// Define el intervalo de tiempo para ejecutar la función
+var intervalo = setInterval(function () {
+    // Obtiene la fecha actual
+    var fechaActual = new Date();
+    // Comprueba si han pasado 7 días (1 semana) desde la última vez que se ejecutó la función
+    if (fechaActual.getDay() === 1) { // Si hoy es Lunes
+        myFunction();
+    }
+}, 86400000); // 86400000 milisegundos = 1 día
+
+
 function asignarOnClick() {
     for (let i = 1; i < 7; i++) {
-        
-        
-        let padres = document.getElementById('padreG' + i);                
-        
+
+
+        let padres = document.getElementById('padreG' + i);
+
         padres.onclick = function () {
             fetch('moduloAlmacen/moduloEstante/vista_Estante.html')
                     .then(function (response) {
@@ -146,10 +163,10 @@ function cargarGraficas() {
 }
 
 function updateStatus() {
-    
+
     //--------------------------------------------
     let porcentaje = chart1.data.datasets[0].data[1];
-    
+
 
     if (porcentaje >= 80) {
 
@@ -170,7 +187,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart2.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG2.style.backgroundColor = '#ADE792';
@@ -190,7 +207,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart3.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG3.style.backgroundColor = '#ADE792';
@@ -210,7 +227,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart4.data.datasets[0].data[1];
-    
+
 
     if (porcentaje >= 80) {
 
@@ -231,7 +248,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart5.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG5.style.backgroundColor = '#ADE792';
@@ -251,7 +268,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart6.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG6.style.backgroundColor = '#ADE792';

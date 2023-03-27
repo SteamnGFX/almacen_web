@@ -31,11 +31,9 @@ function asignarOnClick() {
                     })
                     .then(function (html) {
                         // Insertar el HTML en el DOM
-                        
-                        
+                                                
                         document.getElementById('contenedorPrincipal').innerHTML = html;
-                        
-                        
+                                                
                         // Cargar el controlador JS
                         let script = document.createElement('script');
                         script.src = 'moduloAlmacen/moduloEstante/ControladorEstante.js';
