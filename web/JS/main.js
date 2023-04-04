@@ -13,12 +13,10 @@ function leerUsuario() {
     let emp = JSON.parse(sessionStorage.getItem("usuario"));
 
     if (emp !== null) {
-        document.getElementById("txtUsuario").innerHTML = emp.nombre + " - " + emp.usuario.rol;
-    }
+        document.getElementById("lblUsuario").innerHTML = emp.nombre + " - " + emp.usuario.rol;
+    }    
 
-    console.log(document.getElementById("txtUsuario").textContent);
-
-    if (document.getElementById("txtUsuario").textContent === "USER NOT IDENTIFY") {
+    if (document.getElementById("lblUsuario").textContent === "USER NOT IDENTIFY") {
         
         localStorage.setItem("intento", "1");
 

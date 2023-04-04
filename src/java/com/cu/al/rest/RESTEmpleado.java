@@ -85,14 +85,14 @@ public class RESTEmpleado {
     @Produces(MediaType.APPLICATION_JSON)
     //El FormParam a diferencia del QueryParam, no hace una consulta si no que los extrae de un Formulario si asi se desea
     public Response delete(@FormParam("idEmpleado") @DefaultValue("0") int idEmpleado) throws Exception {
-        System.out.println("Ejecutó delete");
+        
         String out = null;
         ControladorEmpleado ce = new ControladorEmpleado();
 
         try {
             //Convertimos los datos empleado a Json con ayuda de Gson
             //Si el id del empleado no existe lo añadimos, si ya existe lo actualizamos
-            System.out.println(idEmpleado);
+            
             ce.delete(idEmpleado);
             out = """
                     {"success":"Empleado eliminado correctamente"}

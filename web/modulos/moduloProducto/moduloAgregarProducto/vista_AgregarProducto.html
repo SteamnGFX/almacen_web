@@ -1,47 +1,77 @@
+<div class="container-fluid" id="contenedorAgregar" >
+    <div class="d-flex flex-row align-items-center p-4" onclick="moduloProducto.btnVolverCatalogo()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" style="color: #559ACA">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg> 
+        <p class="m-0 ps-4" style="color: #559ACA" >
+            VOLVER
+        </p>
+    </div>
 
-<div class="conteiner-fluid" >
+    <div class="container"> 
+        <h2 class="h1 d-flex justify-content-center m-3 p-3"> <b id="titulo-modulo">AGREGAR PRODUCTO</b></h2>
 
-
-
-    <div class="container p-5 my-5  border-dark rounded-3 shadow  shadow-lg " style="background-color: #e4ebf0" > 
-        <h2 class="h1 d-flex justify-content-center m-3 p-3"> <b>Agregar Producto</b></h2>
-
-        <div class="row ">
-            <div class="form-floating  col-6 ">
-                <input id="nombre" type="text" class="form-control  m-3 " placeholder="Nombre">
-                <label class="m-3 " style="color: gray; padding: 15px" for="nombre">Nombre</label>
+        <div class="row">
+            <div class="form-floating  col-6 d-none">
+                <input id="txtIdProducto" type="text" class="form-control" placeholder="idProducto">
+                    <label class="form-label ps-3" style="color: gray;" for="nombre">idProducto</label>
             </div>
-            <div class="form-floating   col-6 ">
-                <input id="existencias" type="number" class="form-control m-3  " placeholder="Existencias">
-                <label class="m-3 " style="color: gray; padding: 15px" for="existencias">Existencias</label>
+            <div class="form-floating  col-6 my-3">
+                <input id="txtNombre" type="text" class="form-control" placeholder="Nombre">
+                    <label class="form-label ps-3 " style="color: gray; " for="nombre">NOMBRE</label>
             </div>
-            <div class="form-floating   col-6 " >
-                <input id="proveedor" type="text" class="form-control m-3   " placeholder="Proveedor">
-                <label class="m-3 " style="color: gray; padding: 15px" for="proveedor">Proveedor</label>
+            <div class="form-floating  col-6 my-3">
+                <input id="txtTipo"  type="text" class="form-control" placeholder="Nombre">
+                    <label class="form-label ps-3" style="color: gray;" for="descripcion">TIPO</label>
             </div>
-
-            <div class="form-floating   col-6">
-                <input id="nombre" type="text" class="form-control m-3    " disabled >
-                <label class="m-3 " style="color: gray; padding: 15px"  for="nombre"><img style="padding :  2px"  class=" m-auto" src="../../icons/icons8-bloquear-24.png" height="15" width="15" /> Codigo de Barras </label>
+            <div class="form-floating   col-6 my-3">
+                <input id="txtExistencias" type="number" class="form-control" placeholder="Existencias">
+                    <label class="form-label ps-3 " style="color: gray; " for="existencias">EXISTENCIAS</label>
+            </div>
+            <div class="form-floating   col-6 my-3" >
+                <input id="txtProveedor" type="text" class="form-control" placeholder="Proveedor">
+                    <label class="form-label ps-3" style="color: gray; " for="proveedor">PROVEEDOR</label>
             </div>
 
-            <div class="form-floating  col-6">
-                <input id="fechaE" type="date" class="form-control m-3  " placeholder="Fecha">
-                <label class="m-3 " style="color: gray; padding: 15px" for="fechaE">Fecha de Entrada</label>
+            <div class="form-floating col-6 my-3">
+                <input id="txtFecha" type="date" class="form-control"  >
+                    <label class="form-label ps-3" style="color: gray; "  for="fecha"> FECHA DE ENTRADA </label>
             </div>
-            <div class="form-floating   col-6">
-                <input id="marca" type="text" class="form-control m-3  " placeholder="Marca">
-                <label class="m-3 " style="color: gray; padding: 15px" for="marca">Marca</label>
+
+            <div class="form-floating col-6 my-3">
+                <input id="txtMarca" type="text" class="form-control" placeholder="Marca">
+                    <label class="form-label ps-3" for="marca" style="color: gray; " >MARCA</label>
             </div>
-            <div class="form-floating  col-12">
-                <input id="descripcion"  type="text" class="form-control p-5 m-3 " placeholder="Nombre">
-                <label class="m-3 " style="color: gray; padding: 15px" for="descripcion">Descripcion</label>
-            </div>
+            <div class="form-floating  col-6 my-3">
+                <input id="txtDescripcion"  type="text" class="form-control" placeholder="Nombre">
+                    <label class="form-label ps-3" style="color: gray;" for="descripcion">DESCRIPCION</label>
+            </div>            
         </div>
 
         <div class="d-flex justify-content-center">
-            <button class="btn btn-success m-5">Guardar</button>
-            <button class="btn btn-danger m-5">Cancelar</button>
+            <button onclick="moduloProducto.save()" class="btn btn-success m-5 d-flex flex-row justify-content-around align-items-center">
+                <div class="d-flex flex-row justify-content-center align-items-center pe-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+                        <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/>
+                    </svg>
+                </div>
+
+                <span class="text-center align-middle">
+                    GUARDAR 
+                </span>
+            </button>
+            <button  onclick="cargarProducto()" class="btn btn-danger m-5 d-flex flex-row justify-content-around align-items-center">
+                <div class="d-flex justify-content-center align-items-center pe-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+                    </svg>
+                </div>
+
+                <span class="text-center align-middle">
+                    CANCELAR
+                </span>
+
+            </button>
         </div>
 
     </div>

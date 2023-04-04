@@ -19,7 +19,7 @@ var chart4;
 var chart5;
 var chart6;
 
-function asignarOnClick() {
+export function asignarOnClick() {
     for (let i = 1; i < 7; i++) {        
         
         let padres = document.getElementById('padreG' + i);
@@ -46,11 +46,11 @@ function asignarOnClick() {
     }
 }
 
-function cambiarTitulo() {
+export function cambiarTitulo() {
     document.title = "Almacen";
 }
 
-function cargarGraficas() {
+export function cargarGraficas() {
     let data0 = {
         datasets: [{
                 label: 'Existencias',

@@ -1,8 +1,10 @@
-/* global Swal */
-
 //VARIABLES NECESARIAS PARA FUNCIONAR
-let empleados = new Array();
 
+let empleados = new Array();
+//let iconoActivo = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="fill: green;" class="bi bi-circle w-25" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/></svg>';
+//let iconoInactivo = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="fill: red;" class="bi bi-circle w-25" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/></svg>';
+let iconoActivo = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="fill: green;" class="bi bi-circle-fill w-25" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg>';
+let iconoInactivo = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="fill: red;" class="bi bi-circle-fill w-25" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg>';
 //VARIABLES DONDE GUARDAREMOS AL EMPLEADO SELECCIONADO
 //Se guardan en variables lo que seleccione en el catálogo para despues usarlo en el FETCH de modificar
 //Variables ID'S
@@ -32,19 +34,17 @@ let txtRol;
 //Variable de estatus
 let txtEstatus;
 
-
-
 export function inicializar() {
     cargarModuloCatalogoEmpleados();
     refrescarTabla();
     cambiarTitulo();
 }
 
-function cambiarTitulo() {
+export function cambiarTitulo() {
     document.title = "Almacén - Gestión Empleados";
 }
 
-function cargarModuloCatalogoEmpleados() {
+export function cargarModuloCatalogoEmpleados() {
     fetch("moduloEmpleado/moduloRegistrarEmpleado/vista_CatalogoEmpleado.html")
             .then(
                     function (response) {
@@ -54,16 +54,17 @@ function cargarModuloCatalogoEmpleados() {
             .then(
                     function (html) {
                         document.getElementById("contenedor-modulo").innerHTML = html;
+                        
                         refrescarTabla();
+                        
                         $('#txtBuscarEmpleado').on('keyup', function () {
-                            $('#tblEmpleadosHead').DataTable()
-                                    .search(this.value)
-                                    .draw();
+                            $('#tblEmpleadosHead').DataTable().search(this.value).draw();
                         });
+                        
                     });
 }
 
-function cargarModuloModificarEmpleado() {
+export function cargarModuloModificarEmpleado() {
     fetch("moduloEmpleado/moduloRegistrarEmpleado/vista_ModificarEmpleado.html")
             .then(
                     function (response) {
@@ -188,6 +189,9 @@ function tablaDataTable(data) {
     });
 }
 
+let iconoEditar = "xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-pencil-square icono-modificar' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg>";
+let iconoEliminar = 'xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash icono-eliminar" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>';
+
 function loadTabla(data) {
     let cuerpo = "";
     let estatus = "";
@@ -195,22 +199,33 @@ function loadTabla(data) {
 
     empleados.forEach(function (empleado) {
 
-        if (empleado.estatus == 1) {
-            estatus = "Activo";
-        } else {
-            estatus = "Inactivo";
-        }
-
+        estatus = empleado.estatus == 1 ? "<span class='d-inline-block w-75 '>ACTIVO</span>" + iconoActivo : "<span class='d-inline-block w-75 '>INACTIVO</span>" + iconoInactivo;
+        
         let registro =
-                '<tr id="' + empleados.indexOf(empleado) + '"class="" onclick="moduloEmpleado.selectEmpleado(' + empleados.indexOf(empleado) + ');">' +
+                '<tr id="' + empleados.indexOf(empleado) + '">' +
                 '<td class="text-center">' + empleado.nombre + '</td>' +
                 '<td class="text-center">' + empleado.apellidoPaterno + " " + empleado.apellidoMaterno + '</td>' +
                 '<td class="text-center">' + empleado.telefonoMovil + '</td>' +
                 '<td class="text-center">' + empleado.usuario.rol + '</td>' +
                 '<td class="text-center">' + estatus + '</td>' +
-                '<td class="text-center">' + '<div class="d-flex"> <div class="col"> <img src="../recursos/edit.png" class="imagenTabla" onclick=moduloEmpleado.modificarEmpleado(' + empleados.indexOf(empleado) + ')> </div> <div class="col"><img src="../recursos/remove.png" onclick="moduloEmpleado.eliminarEmpleado(' + empleados.indexOf(empleado) + ',' + empleado.idEmpleado + ')"class="imagenTabla"></div> </div>' + '</td></tr>';
+                '<td class="text-center">' + 
+                            '<div class="d-flex"> \n\
+                                <div class="col">' +
+                                    '<svg ' + 'onclick= moduloEmpleado.modificarEmpleado(' + empleados.indexOf(empleado) + ') ' +
+                                    iconoEditar +
+                                    
+                                '</div>' 
+                                +
+                                '<div class="col">' +
+                                    '<svg ' + 'onclick= moduloEmpleado.eliminarEmpleado(' + empleados.indexOf(empleado) + ',' + empleado.idEmpleado + ')' +
+                                    iconoEliminar +
+                                    
+                                '</div> \n\
+                            </div>' + 
+                '</td></tr>';
         cuerpo += registro;
     });
+    
     document.getElementById("tblEmpleados").innerHTML = cuerpo;
 }
 
@@ -247,7 +262,8 @@ export function save() {
         empleado.rfc = normalizar(document.getElementById("txtRfc").value);
 
         //Datos de usuario
-        empleado.usuario.Usuario = document.getElementById("txtUsuario").value;
+        empleado.usuario.usuario = document.getElementById("txtUsuario").value;
+        
         empleado.usuario.contrasenia = document.getElementById("txtPassword").value;
         empleado.usuario.rol = normalizar(document.getElementById("txtRol").value);
         empleado.numeroUnico = normalizar(document.getElementById("txtNumUnico").value);
@@ -256,6 +272,9 @@ export function save() {
         datos = {
             datosEmpleado: JSON.stringify(empleado)
         };
+
+        console.log("Datos de Empleado");
+        console.log(datos);
 
 
         params = new URLSearchParams(datos);
@@ -287,7 +306,7 @@ export function save() {
                     document.getElementById("txtNumUnico").value = data.usuario.numeroUnico;
 
                     Swal.fire('', 'Datos del empleado actualizados correctamente!', 'success');
-                    clean();
+                    
                     cargarModuloCatalogoEmpleados();
 
 
@@ -339,7 +358,6 @@ export function eliminarEmpleado(index, idEmpleado) {
             params = new URLSearchParams(datos);
 
 
-
             fetch("../api/empleado/delete?",
                     {
                         method: "PUT",
@@ -349,13 +367,15 @@ export function eliminarEmpleado(index, idEmpleado) {
             setTimeout(function () {
                 refrescarTabla();
             }, 1000);
+            
         } else if (result.isDenied) {
+            
         }
     });
 }
 
 
-function guardarDatosEmpleadoSeleccionado(index) {
+export function guardarDatosEmpleadoSeleccionado(index) {
     txtIdEmpleado = empleados[index].idEmpleado;
     txtIdPersona = empleados[index].idPersona;
     txtIdUsuario = empleados[index].usuario.idUsuario;
@@ -375,7 +395,7 @@ function guardarDatosEmpleadoSeleccionado(index) {
 
 
     //Datos de usuario
-    txtUsuario = empleados[index].usuario.Usuario;
+    txtUsuario = empleados[index].usuario.usuario;
     txtPassword = empleados[index].usuario.contrasenia;
     txtRol = empleados[index].usuario.rol;
 
@@ -384,7 +404,7 @@ function guardarDatosEmpleadoSeleccionado(index) {
 
 }
 
-function cargarDatosModificarEmpleado() {
+export function cargarDatosModificarEmpleado() {
     //Datos no Visibles
     document.getElementById("txtIdEmpleado").value = txtIdEmpleado;
     document.getElementById("txtIdUsuario").value = txtIdUsuario;
@@ -433,88 +453,54 @@ function validarDatos() {
 
 
     if (nombre === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el nombre vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        notificacion('error','No puedes tener el nombre vacío!');
         return 1;
 
     } else if (apellido_paterno === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el apellido vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        notificacion('error','No puedes tener el apellido vacío!');
         return 1;
 
     } else if (apellido_materno === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el Apellido Paterno vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+       
+        notificacion('error','No puedes tener el Apellido Paterno vacío!');
         return 1;
     } else if (usuario === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el Usuario vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+       
+        notificacion('error','No puedes tener el Usuario vacío!');
         return 1;
     } else if (genero === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el Genero vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        notificacion('error','No puedes tener el Genero vacío!');
         return 1;
     } else if (rol === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el rol vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        notificacion('error','No puedes tener el rol vacío!');
         return 1;
     } else if (password === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener la Contraseña vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        notificacion('error','No puedes tener la Contraseña vacío!');
         return 1;
     } else if (correo_electronico === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el Correo Electronico vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        notificacion('error','No puedes tener el Correo Electronico vacío!');
         return 1;
     } else if (rfc === "") {
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'No puedes tener el RFC vacío!',
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        notificacion('error','No puedes tener el RFC vacío!');
         return 1;
     }
     return 0;
+}
+
+
+function notificacion(tipo, mensaje) {
+    Swal.fire({
+        position: 'center',
+        icon: tipo,
+        title: mensaje,
+        showConfirmButton: false,
+        timer: 1500
+    });
 }

@@ -2,8 +2,7 @@
     --animate-duration: 0.3s;
 }
 
-
-.searchEmpleado{
+.searchInput{
     border-radius: 20px 0px 0px 20px;
     height: 50px;
     width: 200px;
@@ -12,27 +11,34 @@
     border-color: #B4B4B4;
 }
 
-.searchEmpleadoBefore{
+.searchInputBefore{
     border-radius: 0px 20px 20px 0px;
     height: 50px;
     width: 50px;
     border-style: solid;
     border-color: #B4B4B4;
     background-color: #B4B4B4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dataTables_filter{
     display:none;
 }
 
-.searchEmpleado::placeholder{
+.searchInput::placeholder{
     font-size: 15px;
 }
 
 .imgSearch{
     width: 32px;
     height: 32px;
-    margin-top: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .btn-purple{
@@ -61,15 +67,27 @@
     width: 25em;
     margin: 100px;
     opacity: 0; /* Empieza con opacidad 0 */
-    animation: fade-in 5s forwards;
+    animation: fade-in 5s ;
 }
 
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.3;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+.icono-eliminar:hover{
+    
+    fill: #EC7063; /* cambia el color de relleno del SVG */
+
+}
+
+.icono-modificar:hover{
+    
+    fill: #58D68D; /* cambia el color de relleno del SVG */
+
 }

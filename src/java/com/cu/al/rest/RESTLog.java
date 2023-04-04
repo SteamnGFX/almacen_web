@@ -29,7 +29,7 @@ public class RESTLog {
     public Response login(@FormParam("credenciales") @DefaultValue("") String credenciales) {
         
         
-        System.out.println(credenciales);
+        
         String out = null;
         Usuario user = null;
         Empleado emp = null;
@@ -39,14 +39,14 @@ public class RESTLog {
         ControladorEmpleado ctrEm = new ControladorEmpleado();
         try {
             user = gson.fromJson(credenciales, Usuario.class);
-            System.out.println("CREDENCIALES: " + user.getContrasenia() + " " + user.getUsuario());
+            
             emp = ctrEm.login(user.getUsuario(), user.getContrasenia());
 
             if (emp != null) {
                 
                 out = new Gson().toJson(emp);
                 
-                System.out.println("EMP RESULT: " + emp);
+                
             } else {
                 out = """
                       {"error":"Usuario/contraseña no son válidos!"}

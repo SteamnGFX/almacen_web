@@ -1,4 +1,12 @@
 /* global Swal */
+document.getElementById("user").focus();
+
+setTimeout(function() {
+    // Segunda instrucción
+    document.getElementById("pass").focus();
+}, 1000);
+
+
 const inputs = document.querySelectorAll(".input");
 
 

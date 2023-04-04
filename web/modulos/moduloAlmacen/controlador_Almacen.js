@@ -1,23 +1,31 @@
-var ctx1 = document.getElementById('myChart1').getContext('2d');
-var ctx2 = document.getElementById('myChart2').getContext('2d');
-var ctx3 = document.getElementById('myChart3').getContext('2d');
-var ctx4 = document.getElementById('myChart4').getContext('2d');
-var ctx5 = document.getElementById('myChart5').getContext('2d');
-var ctx6 = document.getElementById('myChart6').getContext('2d');
+let ctx1 = document.getElementById('myChart1').getContext('2d');
+let ctx2 = document.getElementById('myChart2').getContext('2d');
+let ctx3 = document.getElementById('myChart3').getContext('2d');
+let ctx4 = document.getElementById('myChart4').getContext('2d');
+let ctx5 = document.getElementById('myChart5').getContext('2d');
+let ctx6 = document.getElementById('myChart6').getContext('2d');
 
-var padreG1 = document.getElementById('padreG1');
-var padreG2 = document.getElementById('padreG2');
-var padreG3 = document.getElementById('padreG3');
-var padreG4 = document.getElementById('padreG4');
-var padreG5 = document.getElementById('padreG5');
-var padreG6 = document.getElementById('padreG6');
+let padreG1 = document.getElementById('padreG1');
+let padreG2 = document.getElementById('padreG2');
+let padreG3 = document.getElementById('padreG3');
+let padreG4 = document.getElementById('padreG4');
+let padreG5 = document.getElementById('padreG5');
+let padreG6 = document.getElementById('padreG6');
 
-var chart1;
-var chart2;
-var chart3;
-var chart4;
-var chart5;
-var chart6;
+let chart1;
+let chart2;
+let chart3;
+let chart4;
+let chart5;
+let chart6;
+
+
+export function inicializar(){
+    cargarGraficas();
+    actualizarEstado();
+    cambiarTitulo();
+    asignarOnClick();
+}
 
 // Define la función que se ejecutará cada semana
 function actualizacionSemanal() {
@@ -26,9 +34,9 @@ function actualizacionSemanal() {
 }
 
 // Define el intervalo de tiempo para ejecutar la función
-var intervalo = setInterval(function () {
+let intervalo = setInterval(function () {
     // Obtiene la fecha actual
-    var fechaActual = new Date();
+    let fechaActual = new Date();
     // Comprueba si han pasado 7 días (1 semana) desde la última vez que se ejecutó la función
     if (fechaActual.getDay() === 1) { // Si hoy es Lunes
         myFunction();
@@ -36,7 +44,7 @@ var intervalo = setInterval(function () {
 }, 86400000); // 86400000 milisegundos = 1 día
 
 
-function asignarOnClick() {
+export function asignarOnClick() {
     for (let i = 1; i < 7; i++) {
 
 
@@ -64,11 +72,11 @@ function asignarOnClick() {
     }
 }
 
-function cambiarTitulo() {
+export function cambiarTitulo() {
     document.title = "Almacen";
 }
 
-function cargarGraficas() {
+export function cargarGraficas() {
     let data0 = {
         datasets: [{
                 label: 'Existencias',
@@ -162,7 +170,7 @@ function cargarGraficas() {
 
 }
 
-function updateStatus() {
+export function actualizarEstado() {
 
     //--------------------------------------------
     let porcentaje = chart1.data.datasets[0].data[1];
@@ -288,10 +296,3 @@ function updateStatus() {
 
 }
 
-
-
-
-cargarGraficas();
-updateStatus();
-cambiarTitulo();
-asignarOnClick();
