@@ -1,30 +1,55 @@
-var  ctx1 = document.getElementById('myChart1').getContext('2d');
-var  ctx2 = document.getElementById('myChart2').getContext('2d');
-var  ctx3 = document.getElementById('myChart3').getContext('2d');
-var  ctx4 = document.getElementById('myChart4').getContext('2d');
-var  ctx5 = document.getElementById('myChart5').getContext('2d');
-var  ctx6 = document.getElementById('myChart6').getContext('2d');
+let ctx1 = document.getElementById('myChart1').getContext('2d');
+let ctx2 = document.getElementById('myChart2').getContext('2d');
+let ctx3 = document.getElementById('myChart3').getContext('2d');
+let ctx4 = document.getElementById('myChart4').getContext('2d');
+let ctx5 = document.getElementById('myChart5').getContext('2d');
+let ctx6 = document.getElementById('myChart6').getContext('2d');
 
-var  padreG1 = document.getElementById('padreG1');
-var  padreG2 = document.getElementById('padreG2');
-var  padreG3 = document.getElementById('padreG3');
-var  padreG4 = document.getElementById('padreG4');
-var  padreG5 = document.getElementById('padreG5');
-var  padreG6 = document.getElementById('padreG6');
+let padreG1 = document.getElementById('padreG1');
+let padreG2 = document.getElementById('padreG2');
+let padreG3 = document.getElementById('padreG3');
+let padreG4 = document.getElementById('padreG4');
+let padreG5 = document.getElementById('padreG5');
+let padreG6 = document.getElementById('padreG6');
 
-var chart1;
-var chart2;
-var chart3;
-var chart4;
-var chart5;
-var chart6;
+let chart1;
+let chart2;
+let chart3;
+let chart4;
+let chart5;
+let chart6;
 
-function asignarOnClick() {
+
+export function inicializar(){
+    cargarGraficas();
+    actualizarEstado();
+    cambiarTitulo();
+    asignarOnClick();
+}
+
+// Define la función que se ejecutará cada semana
+function actualizacionSemanal() {
+    console.log('Ha pasado una semana desde la última vez que se ejecutó la función.');
+    // Inserta aquí el código que deseas que se ejecute cada semana
+}
+
+// Define el intervalo de tiempo para ejecutar la función
+let intervalo = setInterval(function () {
+    // Obtiene la fecha actual
+    let fechaActual = new Date();
+    // Comprueba si han pasado 7 días (1 semana) desde la última vez que se ejecutó la función
+    if (fechaActual.getDay() === 1) { // Si hoy es Lunes
+        myFunction();
+    }
+}, 86400000); // 86400000 milisegundos = 1 día
+
+
+export function asignarOnClick() {
     for (let i = 1; i < 7; i++) {
-        
-        
-        let padres = document.getElementById('padreG' + i);                
-        
+
+
+        let padres = document.getElementById('padreG' + i);
+
         padres.onclick = function () {
             fetch('moduloAlmacen/moduloEstante/vista_Estante.html')
                     .then(function (response) {
@@ -47,11 +72,11 @@ function asignarOnClick() {
     }
 }
 
-function cambiarTitulo() {
+export function cambiarTitulo() {
     document.title = "Almacen";
 }
 
-function cargarGraficas() {
+export function cargarGraficas() {
     let data0 = {
         datasets: [{
                 label: 'Existencias',
@@ -145,11 +170,11 @@ function cargarGraficas() {
 
 }
 
-function updateStatus() {
-    
+export function actualizarEstado() {
+
     //--------------------------------------------
     let porcentaje = chart1.data.datasets[0].data[1];
-    
+
 
     if (porcentaje >= 80) {
 
@@ -170,7 +195,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart2.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG2.style.backgroundColor = '#ADE792';
@@ -190,7 +215,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart3.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG3.style.backgroundColor = '#ADE792';
@@ -210,7 +235,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart4.data.datasets[0].data[1];
-    
+
 
     if (porcentaje >= 80) {
 
@@ -231,7 +256,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart5.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG5.style.backgroundColor = '#ADE792';
@@ -251,7 +276,7 @@ function updateStatus() {
 
     //--------------------------------------------
     porcentaje = chart6.data.datasets[0].data[1];
-    
+
     if (porcentaje >= 80) {
 
         padreG6.style.backgroundColor = '#ADE792';
@@ -271,10 +296,3 @@ function updateStatus() {
 
 }
 
-
-
-
-cargarGraficas();
-updateStatus();
-cambiarTitulo();
-asignarOnClick();

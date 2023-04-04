@@ -1,0 +1,122 @@
+
+<div>
+    <div class="d-flex flex-row align-items-center p-4" onclick="moduloEmpleado.btnVolverCatalogo()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" style="color: #559ACA">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg> 
+        <p class="m-0 ps-4" style="color: #559ACA" >
+            VOLVER
+        </p>
+    </div>
+
+    <form class="container was-validated">
+
+        <h2 class="h1 d-flex justify-content-center m-3 p-3"> <b id="titulo-modulo">AGREGAR EMPLEADO</b></h2>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex d-none">
+                <div class="input-group my-3">
+                    <input id="txtIdEmpleado" type="text" class="input" required autocomplete='off'>
+                        <label for="txtIdEmpleado" class="input-label">idEmpleado</label>
+
+                </div>
+                <div class="input-group my-3">
+                    <input id="txtIdUsuario" type="text" class="input" required autocomplete='off'>
+                        <label for="txtIdUsuario" class="input-label">idUsuario</label>
+                </div>
+            </div>
+            <div class="col-lg-12 d-flex d-none">
+                <div class="input-group my-3 ">
+                    <input class="input" id="txtNumUnico" type="text" disabled style="background-color: #ECECEC;" >
+                        <label for="txtNumUnico" class="input-label">N.° Unico Empleado</label>
+                </div>
+            </div>
+            <div class="form-floating col-6 my-3">
+                <input id="txtNombre" type="text" class="form-control" placeholder="NOMBRE" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                    <label class="form-label ps-3" style="color: gray; ">NOMBRE <label style="color:#D9534F">*</label></label>
+            </div>
+            <div class="form-floating col-6 my-3" ">
+                <input id="txtApellidoMaterno" type="text" class="form-control " placeholder="APELLIDO MATERNO" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                    <label class="form-label ps-3" style="color: gray; ">APELLIDO MATERNO <label style="color:#D9534F">*</label></label>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-floating col-6 my-3">
+                <input id="txtApellidoPaterno" type="text" class="form-control" placeholder="APELLIDO PATERNO" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                    <label class="form-label ps-3" style="color: gray; ">APELLIDO PATERNO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 my-3" >
+                <input id="txtTelefonoFijo" type="text" class="form-control " placeholder="TELEFONO FIJO" required maxlength="10" autocomplete='off' onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                    <label class="form-label ps-3" style="color: gray; ">TELEFONO FIJO</label>
+            </div>
+
+            <div class="form-floating col-6 my-3">
+                <input id="txtTelefonoMovil" type="text" class="form-control " placeholder="TELEFONO MOVIL" required maxlength="10" autocomplete='off' onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                    <label class="form-label ps-3" style="color: gray; ">TELEFONO MOVIL <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 my-3" >
+                <input id="txtUsuario" type="text" class="form-control " placeholder="USUARIO EMPLEADO" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                    <label class="form-label ps-3" style="color: gray; ">USUARIO EMPLEADO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 my-3">
+                <input id="txtPassword" type="text" class="form-control " placeholder="CONTRASEÑA EMPLEADO" required onkeypress="return (event.charCode == 95 || event.charCode == 47 || event.charCode == 13 || event.charCode == 45 || event.charCode == 36 || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                    <label class="form-label ps-3" style="color: gray; ">CONTRASEÑA EMPLEADO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 my-3" >
+                <input id="txtCorreo" type="text" class="form-control" placeholder="CORREO EMPLEADO" required autocomplete='off' onkeypress="return (event.charCode === 46 || event.charCode === 209 || event.charCode === 241 || event.charCode === 64 || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                    <label class="form-label ps-3" style="color: gray; ">CORREO EMPLEADO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 my-3">
+                <input id="txtRol" type="text" class="form-control" required placeholder="ROL">
+                    <label class="form-label ps-3" style="color: gray; ">ROL <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 my-3 " >
+                <input id="txtRfc" type="text" class="form-control" required placeholder="RFC">
+                    <label class="form-label ps-3" style="color: gray; ">RFC</label>
+            </div>
+
+            <div class="form-floating col-6 my-3">
+                <select class="form-select" required id="txtGenero" name="genero">
+
+                    <option value="H">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="X">No binario</option>
+                </select>
+                <label class="form-label ps-3">GENERO</label>
+            </div>
+
+        </div>
+    </form>
+
+
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-success m-5 d-flex flex-row justify-content-around align-items-center" onclick="moduloEmpleado.save();">
+            <div class="d-flex justify-content-center align-items-center pe-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                </svg>
+            </div>
+            <span class="text-center align-middle">
+                GUARDAR
+            </span>
+        </button>
+        <button class="btn btn-danger m-5 d-flex flex-row justify-content-around align-items-center" onclick="moduloEmpleado.btnVolverCatalogo();">
+            <div class="d-flex justify-content-center align-items-center pe-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+                </svg>
+            </div>
+            <span class="text-center align-middle">
+                CANCELAR
+            </span>
+        </button>
+    </div>
+</div>
+
+

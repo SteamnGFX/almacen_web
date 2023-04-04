@@ -1,0 +1,88 @@
+<div class="conteiner-fluid" id="contenedor-modulo">
+    <div style="background-color: #ffffff; border-radius: 20px; margin: 20px;">
+        <p style="margin-left: 20px; padding-top: 10px; color: #559ACA" onclick="moduloEmpleado.btnVolverCatalogo()">< VOLVER</p>
+        <div class="col-lg-12 d-flex d-none">
+            <div class="input-group m-2">
+                <input id="txtIdEmpleado" type="text" class="input" required autocomplete='off'>
+                <label for="txtIdEmpleado" class="input-label">idEmpleado</label>
+            </div>
+            <div class="input-group m-2">
+                <input id="txtIdUsuario" type="text" class="input" required autocomplete='off'>
+                <label for="txtIdUsuario" class="input-label">idUsuario</label>
+            </div>
+        </div>
+        <div class="col-lg-12 d-flex">
+            <div class="input-group m-2 d-none">
+                <input class="input" id="txtNumUnico" type="text" disabled style="background-color: #ECECEC;" >
+                <label for="txtNumUnico" class="input-label">N.° Unico Empleado</label>
+            </div>
+        </div>
+        <h2 class="h1 d-flex justify-content-center m-3 p-3"> <b>MODIFICAR EMPLEADO</b></h2>
+
+        <div class="row ">
+            <div class="form-floating col-6">
+                <input id="txtNombre" type="text" class="form-control m-3" placeholder="NOMBRE" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                <label class="m-3" style="color: gray; padding: 15px">NOMBRE <label style="color:#D9534F">*</label></label>
+            </div>
+            <div class="form-floating col-6" style="padding-right: 5%">
+                <input id="txtApellidoMaterno" type="text" class="form-control m-3" placeholder="APELLIDO MATERNO" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                <label class="m-3" style="color: gray; padding: 15px">APELLIDO MATERNO <label style="color:#D9534F">*</label></label>
+            </div>
+            <div class="form-floating col-6 ">
+                <input id="txtApellidoPaterno" type="text" class="form-control m-3" placeholder="APELLIDO PATERNO" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                <label class="m-3" style="color: gray; padding: 15px">APELLIDO PATERNO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 " style="padding-right: 5%">
+                <input id="txtTelefonoFijo" type="text" class="form-control m-3 " placeholder="TELEFONO FIJO" required maxlength="10" autocomplete='off' onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                <label class="m-3" style="color: gray; padding: 15px">TELEFONO FIJO</label>
+            </div>
+            
+            <div class="form-floating col-6">
+                <input id="txtTelefonoMovil" type="text" class="form-control m-3 " placeholder="TELEFONO MOVIL" required maxlength="10" autocomplete='off' onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                <label class="m-3" style="color: gray; padding: 15px">TELEFONO MOVIL <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6 " style="padding-right: 5%">
+                <input id="txtUsuario" type="text" class="form-control m-3" placeholder="USUARIO EMPLEADO" required autocomplete="off" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                <label class="m-3" style="color: gray; padding: 15px">USUARIO EMPLEADO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6">
+                <input id="txtPassword" type="text" class="form-control m-3" placeholder="CONTRASEÑA EMPLEADO" onkeypress="return (event.charCode == 95 || event.charCode == 47 || event.charCode == 13 || event.charCode == 45 || event.charCode == 36 || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                <label class="m-3" style="color: gray; padding: 15px">CONTRASEÑA EMPLEADO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6" style="padding-right: 5%">
+                <input id="txtCorreo" type="text" class="form-control m-3" placeholder="CORREO EMPLEADO" required autocomplete='off' onkeypress="return (event.charCode === 46 || event.charCode === 209 || event.charCode === 241 || event.charCode === 64 || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))">
+                <label class="m-3" style="color: gray; padding: 15px">CORREO EMPLEADO <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6">
+                <input id="txtRol" type="text" class="form-control m-3" placeholder="ROL">
+                <label class="m-3" style="color: gray; padding: 15px">ROL <label style="color:#D9534F">*</label></label>
+            </div>
+            
+            <div class="form-floating col-6" style="padding-right: 5%">
+                <input id="txtRfc" type="text" class="form-control m-3" placeholder="RFC">
+                <label class="m-3" style="color: gray; padding: 15px">RFC <label style="color:#D9534F">*</label></label>
+            </div>
+
+            <div class="form-floating col-6">
+                <select class="form-control m-3" id="txtGenero" name="genero">
+                    <option value="">GÉNERO <p style="color:#D9534F">*</p></option>
+                    <option value="H">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="X">No binario</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-success m-5" onclick="moduloEmpleado.save();">Guardar</button>
+            <button class="btn btn-danger m-5" onclick="moduloEmpleado.btnVolverCatalogo();">Cancelar</button>
+        </div>
+    </div>
+</div>
+

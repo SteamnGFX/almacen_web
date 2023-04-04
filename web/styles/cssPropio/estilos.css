@@ -1,0 +1,93 @@
+.velocidad {
+    --animate-duration: 0.3s;
+}
+
+.searchInput{
+    border-radius: 20px 0px 0px 20px;
+    height: 50px;
+    width: 200px;
+    border-style: solid;
+    padding-left: 20px;
+    border-color: #B4B4B4;
+}
+
+.searchInputBefore{
+    border-radius: 0px 20px 20px 0px;
+    height: 50px;
+    width: 50px;
+    border-style: solid;
+    border-color: #B4B4B4;
+    background-color: #B4B4B4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dataTables_filter{
+    display:none;
+}
+
+.searchInput::placeholder{
+    font-size: 15px;
+}
+
+.imgSearch{
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.btn-purple{
+    background-color: #8E6BC3;
+    color: #ffffff;
+}
+
+.imagenTabla{
+    width: 32px;
+    height: 32px;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    /* Cambia el tamaño de "mi imagen" al 50% */
+    .logoResponsive {
+        width: 100%;
+        opacity: 0.1;
+        height: auto;
+    }
+}
+
+.logoResponsive {
+    display: block;
+    width: 25em;
+    margin: 100px;
+    opacity: 0; /* Empieza con opacidad 0 */
+    animation: fade-in 5s ;
+}
+
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+.icono-eliminar:hover{
+    
+    fill: #EC7063; /* cambia el color de relleno del SVG */
+
+}
+
+.icono-modificar:hover{
+    
+    fill: #58D68D; /* cambia el color de relleno del SVG */
+
+}

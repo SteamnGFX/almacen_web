@@ -1,50 +1,64 @@
 <!DOCTYPE html>
-<html class="h-100 m-0">
+<html>
     <head>
-        <title> Login </title>
+        <title> Login - ALMACÊN </title>
         <link rel="stylesheet" type="text/css" href="modulos/login/login.css">
         <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-        <link href="styles/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="styles/css/sweetalert2.min.css"/>
+        <link rel="icon" type="image/svg" href="recursos/iconoWeb.svg">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">     
+
+        <script src="JS/sweetalert2.all.min.js"></script>
     </head>
-    <body class="h-100 m-0">
-        <img class="wave" src="styles/icons/Almacen.png">
+    <body>
+        <img class="wave" src="styles/icons/Almacen.png" alt="Almacen">
         <div class="container">
             <div class="img">
-                <img src="styles/icons/log.png">
+                <img style="border-radius: 40px;" src="styles/icons/log.png" alt="login">
             </div>
             <div class="login-content">
-                <form action="index.html">
-                    <img src="styles/icons/Login_-_copia-removebg-preview.png">
-                    <h2 class="">Bienvenido!</h2>
+                <form id="login">
+                    <img src="styles/icons/Login_-_copia-removebg-preview.png" alt=""> 
+                    <p style="font-size: 30px">Bienvenido de vuelta!</p>
+                    <p style="color: gray; font-weight: normal; padding-bottom: 40px">Inicia sesión para continuar.</p>
+                    <label style="color: red" id="lblError"> </label>
                     <div class="input-div one">
                         <div class="i">
-                            <i class=""></i>
+                            <i class="fas fa-user"></i>
                         </div>
-                        <div class="">
+                        <div class="div">
                             <h5>Usuario</h5>
-                            <input type="text" class="">
+                            <input type="text" id="user" class="input">
                         </div>
                     </div>
                     <div class="input-div pass">
                         <div class="i"> 
-                            <i class=""></i>
+                            <i class="fas fa-lock"></i>
                         </div>
-                        <div class="">
-                            <h5>Contrasenia</h5>
-                            <input type="password" class="">
+                        <div class="div">
+                            <h5>Contraseña</h5>
+                            <input type="password" id="pass" class="input">
                         </div>
                     </div>
-                    <a class="btn" onclick="cargarInicio()"> Ingresar </a>
-
+                    <div>
+                        <button class="btn btn-outline-primary"  style="border-radius: 15px;">INGRESAR</button>
+                    </div>
+                    <div>
+                        <p style="color:gray; opacity: 0.2;">FAQ | Soporte | Características </p>
+                    </div>
                 </form>
+
             </div>
+
         </div>
 
     </body>
     
-    <script src="modulos/login/login.js"></script>
-    <script src="styles/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="JS/modulos.js"></script>
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="modulos/login/login.js"></script>
+    <script src="JS/sweetalert2.all.min.js"></script>
+
+
 </html>
